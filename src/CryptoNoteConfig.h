@@ -24,8 +24,8 @@ const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 60;
 //TODO Specify total number of available coins
 //TODO ((uint64_t)(-1)) equals to 18446744073709551616 coins
 //TODO or you can define number explicitly UINT64_C(858986905600000000)
-const uint64_t MONEY_SUPPLY                                  = ;
-const unsigned EMISSION_SPEED_FACTOR                         = 18;
+const uint64_t MONEY_SUPPLY                                  = UINT64_C(10000000000);
+const unsigned EMISSION_SPEED_FACTOR                         = 23;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 //TODO Define number of blocks for block size median calculation
@@ -39,7 +39,7 @@ const uint64_t MINIMUM_FEE                                   = ;
 const uint64_t DEFAULT_DUST_THRESHOLD                        = MINIMUM_FEE;
 
 //TODO Define preferred block's target time
-const uint64_t DIFFICULTY_TARGET                             = 120; // seconds
+const uint64_t DIFFICULTY_TARGET                             = 60; // seconds
 const uint64_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY             = 24 * 60 * 60 / DIFFICULTY_TARGET;
 //TODO There are options to tune CryptoNote's difficulty retargeting function.
 //TODO We recommend not to change it.
@@ -72,8 +72,7 @@ const char     CRYPTONOTE_BLOCKCHAIN_INDICES_FILENAME[]      = "blockchainindice
 const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json";
 } // parameters
 
-//TODO Put here the name of your currency
-const char     CRYPTONOTE_NAME[]                             = "";
+const char     CRYPTONOTE_NAME[]                             = "macpuffins";
 const char     GENESIS_COINBASE_TX_HEX[]                     = "";
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
@@ -84,10 +83,8 @@ const size_t   BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT        =  10000;  //by def
 const size_t   BLOCKS_SYNCHRONIZING_DEFAULT_COUNT            =  200;    //by default, blocks count in blocks downloading
 const size_t   COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT         =  1000;
 
-//TODO This port will be used by the daemon to establish connections with p2p network
-const int      P2P_DEFAULT_PORT                              = ;
-//TODO This port will be used by the daemon to interact with simlewallet
-const int      RPC_DEFAULT_PORT                              = ;
+const int      P2P_DEFAULT_PORT                              = 17840;
+const int      RPC_DEFAULT_PORT                              = 18200;
 
 const size_t   P2P_LOCAL_WHITE_PEERLIST_LIMIT                =  1000;
 const size_t   P2P_LOCAL_GRAY_PEERLIST_LIMIT                 =  5000;
@@ -106,7 +103,7 @@ const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "8f80f9a5a434a9f1
 
 //TODO Add here your network seed nodes
 const std::initializer_list<const char*> SEED_NODES = {
-  //"your_seed_ip1.com:8080",
+  //"34.71.35.169 :17840",
   //"your_seed_ip2.com:8080",
 };
 
@@ -119,7 +116,7 @@ struct CheckpointData {
 __attribute__((unused))
 #endif
 
-// You may add here other checkpoints using the following format:
+// checkpoints using the following format:
 // {<block height>, "<block hash>"},
 const std::initializer_list<CheckpointData> CHECKPOINTS = {
   //{ 10000, "84b6345731e2702cdaadc6ce5e5238c4ca5ecf48e3447136b2ed829b8a95f3ad" },
